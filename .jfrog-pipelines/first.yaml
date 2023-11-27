@@ -1,0 +1,8 @@
+pipelines:
+  - name: first
+    steps: 
+      - name: step1
+        type: Bash
+        execution:
+          onExecute:
+            - echo "Success"
