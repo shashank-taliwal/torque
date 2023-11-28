@@ -20,7 +20,6 @@ pipelines:
             - echo $BRANCH_NAME
           onExecute:
             - printenv
-            - sleep 2m
 
   - name: chronology_at_stepLevelSingle #make sure you have more than 1 node
     steps:
