@@ -1,0 +1,45 @@
+resources:
+  - name: propertyBagWOCC
+    type: PropertyBag
+    configuration:
+      test: test
+
+pipelines:
+
+  - name: waitOnChildComplete_parentPipeline
+    configuration:
+      dependencyMode:
+        waitOnChildComplete: true
+    steps:
+      - name: P_WF_step1WOCC
+        type: Bash
+        configuration:
+          outputResources:
+            - name: propertyBagWOCC
+        execution:
+          onExecute:
+            - echo "executing step..."
+            - sleep 30
+            - write_output propertyBagWOCC test=$run_number
+
+  - name: waitOnChildComplete_childPipeline
+    
+    steps:
+      - name: P_WF_step2WOCC
+        type: Bash
+        configuration:
+          inputResources:
+            - name: propertyBagWOCC
+        execution:
+          onExecute:
+            - echo "executing step..."
+            - sleep 30
+      - name: P_WF_step3WOCC
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: P_WF_step2WOCC
+        execution:
+          onExecute:
+            - echo "executing step..."
+            - sleep 10
