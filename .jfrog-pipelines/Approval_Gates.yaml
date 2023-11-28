@@ -10,7 +10,7 @@ pipelines:
         configuration:
           requiresApproval:
             approvers:
-              - member
+              - admin
         execution:
           onExecute:
             - echo $MY_MESSAGE
@@ -22,7 +22,7 @@ pipelines:
             - name: step1ap1
           requiresApproval:
             approvers:
-              - member
+              - admin
         execution:
           onExecute:
             - echo $MY_MESSAGE
@@ -39,7 +39,6 @@ pipelines:
         configuration:
           requiresApproval:
             approvers:
-              - member
               - admin
         execution:
           onExecute:
@@ -52,7 +51,6 @@ pipelines:
             - name: step3ap1
           requiresApproval:
             approvers:
-              - member
               - admin
         execution:
           onExecute:
