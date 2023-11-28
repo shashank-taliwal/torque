@@ -1,0 +1,16 @@
+pipelines:
+  - name: simpleMultiNodeMatrix2StepletsPipelines
+    steps:
+      - name: simpleMultiNodeMatrix2Steplets
+        type: Matrix
+        stepMode: Bash
+        configuration:
+          multiNode: true
+        stepletMultipliers:
+          environmentVariables:
+            - foo: "foo"
+            - foo: "bar"
+        execution:
+          onExecute:
+            - echo $foo
+            - echo $step_node_name
