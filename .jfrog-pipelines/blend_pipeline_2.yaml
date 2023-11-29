@@ -71,7 +71,7 @@ pipelines:
             - name: S_B_Jenkins
       - name: jenkinsStep1
         type: Jenkins
-       configuration: 
+        configuration: 
           inputSteps:
             - name: jenkinsStep
           jenkinsJobName: pipe_test
@@ -79,7 +79,7 @@ pipelines:
             - name: S_B_Jenkins
       - name: jenkinsStep3
         type: Jenkins
-       configuration: 
+        configuration: 
           inputSteps:
             - name: jenkinsStep
           jenkinsJobName: pipe_test
@@ -87,7 +87,7 @@ pipelines:
             - name: S_B_Jenkins
       - name: jenkinsStep2
         type: Jenkins
-       configuration: 
+        configuration: 
           inputSteps:
             - name: jenkinsStep
           jenkinsJobName: failPipeline
@@ -96,7 +96,7 @@ pipelines:
           allowFailure: true
       - name: jenkinsStep4
         type: Jenkins
-       configuration: 
+        configuration: 
           inputSteps:
             - name: jenkinsStep1
             - name: jenkinsStep2
