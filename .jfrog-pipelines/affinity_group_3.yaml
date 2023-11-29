@@ -1,0 +1,95 @@
+pipelines:
+  - name: Affinity_group_3
+    steps:
+      - name: Step1
+        type: Bash
+        execution:
+          onExecute:
+            - echo 'step1'
+      - name: Step2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step1
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step2
+          affinityGroup: shashank
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step3
+          affinityGroup: shashank
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step5
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step6
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step7
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: jenkinsStep
+        type: Bash
+        configuration: 
+          inputSteps:
+            - name: Step5
+            - name: Step6
+            - name: Step7
+          jenkinsJobName: pipe_test
+          integrations:
+            - name: jenkins_int
+      - name: jenkinsStep1
+        type: Bash
+        configuration: 
+          inputSteps:
+            - name: jenkinsStep
+      - name: jenkinsStep3
+        type: Bash
+        configuration: 
+          inputSteps:
+            - name: jenkinsStep
+      - name: jenkinsStep2
+        type: Bash
+        configuration: 
+          inputSteps:
+            - name: jenkinsStep
+          allowFailure: true
+      - name: jenkinsStep4
+        type: Bash
+        configuration: 
+          inputSteps:
+            - name: jenkinsStep1
+            - name: jenkinsStep2
+            - name: jenkinsStep3
+      
