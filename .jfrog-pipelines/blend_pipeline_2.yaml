@@ -1,5 +1,5 @@
 pipelines:
-  - name: Blend_Pipeline
+  - name: Blend_Pipeline_2
     steps:
       - name: Step1
         type: Bash
@@ -63,9 +63,9 @@ pipelines:
         type: Jenkins
         configuration: 
           inputSteps:
-            - name: step5
-            - name: step6
-            - name: step7
+            - name: Step5
+            - name: Step6
+            - name: Step7
           jenkinsJobName: pipe_test
           integrations:
             - name: jenkins_int
