@@ -1,0 +1,103 @@
+pipelines:
+  - name: Blend_Pipeline
+    steps:
+      - name: Step1
+        type: Bash
+        execution:
+          onExecute:
+            - echo 'step1'
+      - name: Step2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step1
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step2
+          affinityGroup: shashank
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step4
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step3
+          affinityGroup: shashank
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step5
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step6
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: Step7
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step4
+          affinityGroup: taliwal
+        execution:
+          onExecute:
+            - echo "Success"
+      - name: approval_step1
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: Step7
+            - name: Step6
+            - name: Step5
+          requiresApproval:
+            approvers:
+              - admin
+        execution:
+          onExecute:
+            - echo "Hello"
+            - echo $step_approved_by
+            - echo $step_approved_comment
+            - echo $step_approved_at
+      - name: approval_step2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: approval_step1
+            - name: Step7
+            - name: Step6
+            - name: Step5
+          requiresApproval:
+            approvers:
+              - admin
+        execution:
+          onExecute:
+            - echo "Hello"
+            - echo $step_approved_by
+            - echo $step_approved_comment
+            - echo $step_approved_at
+      - name: jenkinsStep
+        type: Jenkins
+        configuration:
+          inputSteps:
+            - name: approval_step2
+          jenkinsJobName: pipe_test
+          integrations:
+            - name: S_B_Jenkins
+          allowFailure: true
