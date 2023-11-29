@@ -61,7 +61,7 @@ pipelines:
             - echo "Success"
       - name: jenkinsStep
         type: Jenkins
-       configuration: 
+        configuration: 
           inputSteps:
             - name: step5
             - name: step6
