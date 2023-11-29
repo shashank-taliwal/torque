@@ -1,107 +1,107 @@
-pipelines:
-  - name: Blend_Pipeline_2
-    steps:
-      - name: Step1
-        type: Bash
-        execution:
-          onExecute:
-            - echo 'step1'
-      - name: Step2
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step1
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: Step3
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step2
-          affinityGroup: shashank
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: Step4
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step3
-          affinityGroup: shashank
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: Step5
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step4
-          affinityGroup: taliwal
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: Step6
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step4
-          affinityGroup: taliwal
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: Step7
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step4
-          affinityGroup: taliwal
-        execution:
-          onExecute:
-            - echo "Success"
-      - name: jenkinsStep
-        type: Jenkins
-        configuration: 
-          inputSteps:
-            - name: Step5
-            - name: Step6
-            - name: Step7
-          jenkinsJobName: pipe_test
-          integrations:
-            - name: jenkins_int
-      - name: jenkinsStep1
-        type: Jenkins
-        configuration: 
-          inputSteps:
-            - name: jenkinsStep
-          jenkinsJobName: pipe_test
-          integrations:
-            - name: jenkins_int
-      - name: jenkinsStep3
-        type: Jenkins
-        configuration: 
-          inputSteps:
-            - name: jenkinsStep
-          jenkinsJobName: pipe_test
-          integrations:
-            - name: jenkins_int
-      - name: jenkinsStep2
-        type: Jenkins
-        configuration: 
-          inputSteps:
-            - name: jenkinsStep
-          jenkinsJobName: failPipeline
-          integrations:
-            - name: jenkins_int
-          allowFailure: true
-      - name: jenkinsStep4
-        type: Jenkins
-        configuration: 
-          inputSteps:
-            - name: jenkinsStep1
-            - name: jenkinsStep2
-            - name: jenkinsStep3
-          jenkinsJobName: pipe_test
-          integrations:
-            - name: jenkins_int
+# pipelines:
+#   - name: Blend_Pipeline_2
+#     steps:
+#       - name: Step1
+#         type: Bash
+#         execution:
+#           onExecute:
+#             - echo 'step1'
+#       - name: Step2
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step1
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: Step3
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step2
+#           affinityGroup: shashank
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: Step4
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step3
+#           affinityGroup: shashank
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: Step5
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step4
+#           affinityGroup: taliwal
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: Step6
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step4
+#           affinityGroup: taliwal
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: Step7
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: Step4
+#           affinityGroup: taliwal
+#         execution:
+#           onExecute:
+#             - echo "Success"
+#       - name: jenkinsStep
+#         type: Jenkins
+#         configuration: 
+#           inputSteps:
+#             - name: Step5
+#             - name: Step6
+#             - name: Step7
+#           jenkinsJobName: pipe_test
+#           integrations:
+#             - name: jenkins_int
+#       - name: jenkinsStep1
+#         type: Jenkins
+#         configuration: 
+#           inputSteps:
+#             - name: jenkinsStep
+#           jenkinsJobName: pipe_test
+#           integrations:
+#             - name: jenkins_int
+#       - name: jenkinsStep3
+#         type: Jenkins
+#         configuration: 
+#           inputSteps:
+#             - name: jenkinsStep
+#           jenkinsJobName: pipe_test
+#           integrations:
+#             - name: jenkins_int
+#       - name: jenkinsStep2
+#         type: Jenkins
+#         configuration: 
+#           inputSteps:
+#             - name: jenkinsStep
+#           jenkinsJobName: failPipeline
+#           integrations:
+#             - name: jenkins_int
+#           allowFailure: true
+#       - name: jenkinsStep4
+#         type: Jenkins
+#         configuration: 
+#           inputSteps:
+#             - name: jenkinsStep1
+#             - name: jenkinsStep2
+#             - name: jenkinsStep3
+#           jenkinsJobName: pipe_test
+#           integrations:
+#             - name: jenkins_int
       
