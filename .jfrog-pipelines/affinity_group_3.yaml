@@ -66,25 +66,34 @@ pipelines:
             - name: Step5
             - name: Step6
             - name: Step7
-          jenkinsJobName: pipe_test
-          integrations:
-            - name: jenkins_int
+        execution:
+          onExecute:
+            - echo "Success"
       - name: jenkinsStep1
         type: Bash
         configuration: 
           inputSteps:
             - name: jenkinsStep
+        execution:
+          onExecute:
+            - echo "Success"
       - name: jenkinsStep3
         type: Bash
         configuration: 
           inputSteps:
             - name: jenkinsStep
+        execution:
+          onExecute:
+            - echo "Success"
       - name: jenkinsStep2
         type: Bash
         configuration: 
           inputSteps:
             - name: jenkinsStep
           allowFailure: true
+        execution:
+          onExecute:
+            - echo "Success"
       - name: jenkinsStep4
         type: Bash
         configuration: 
@@ -92,4 +101,7 @@ pipelines:
             - name: jenkinsStep1
             - name: jenkinsStep2
             - name: jenkinsStep3
+        execution:
+          onExecute:
+            - echo "Success"
       
