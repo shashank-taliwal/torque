@@ -1,24 +1,22 @@
 pipelines:
   - name: Affinity_group_3
     steps:
-      - name: Step1
-        type: Bash
-        execution:
-          onExecute:
-            - echo 'step1'
-      - name: Step2
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: Step1
-        execution:
-          onExecute:
-            - echo "Success"
+      # - name: Step1
+      #   type: Bash
+      #   execution:
+      #     onExecute:
+      #       - echo 'step1'
+      # - name: Step2
+      #   type: Bash
+      #   configuration:
+      #     inputSteps:
+      #       - name: Step1
+      #   execution:
+      #     onExecute:
+      #       - echo "Success"
       - name: Step3
         type: Bash
         configuration:
-          inputSteps:
-            - name: Step2
           affinityGroup: shashank
         execution:
           onExecute:
